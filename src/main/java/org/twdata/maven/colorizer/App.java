@@ -1,4 +1,4 @@
-package org.twdata.maven.coloriser;
+package org.twdata.maven.colorizer;
 
 import java.io.IOException;
 import java.io.PipedInputStream;
@@ -22,7 +22,7 @@ public class App
 
             public void run()
             {
-                System.out.println("Colorising console...");
+                System.out.println("Colorizing console...");
                 OutputLexer lexer = new OutputLexer(pin);
                 System.setOut(new PrintStream(pout));
                 try

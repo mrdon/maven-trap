@@ -1,4 +1,4 @@
-package org.twdata.maven.coloriser;
+package org.twdata.maven.colorizer;
 
 import java.awt.*;
 import java.util.HashMap;
