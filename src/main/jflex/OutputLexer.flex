@@ -2,8 +2,7 @@ package org.twdata.maven.colorizer;
 
 import java.io.*;
 import static org.twdata.maven.colorizer.VT100Writer.CharacterModifier.*;
-import static java.awt.Color.*;
-import java.awt.Color;
+import static org.twdata.maven.colorizer.Color.*;
 
 
 /**

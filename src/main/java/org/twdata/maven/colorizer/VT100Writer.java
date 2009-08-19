@@ -1,6 +1,5 @@
 package org.twdata.maven.colorizer;
 
-import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.io.PrintStream;
@@ -10,7 +9,8 @@ import java.io.PrintStream;
  */
 public class VT100Writer
 {
-    public static enum CharacterModifier {
+    public static enum CharacterModifier
+    {
         CLEAR('0'),
         BOLD('1'),
         UNDERSCORE('4'),
@@ -35,29 +35,30 @@ public class VT100Writer
 
     private static final String ESC = "\033[";
 
-    private static final Map<Color,String> foregroundColorCodes = new HashMap<Color,String>();
+    private static final Map<Color, String> foregroundColorCodes = new HashMap<Color, String>();
 
-    private static final Map<Color,String> backgroundColorCodes = new HashMap<Color,String>();
+    private static final Map<Color, String> backgroundColorCodes = new HashMap<Color, String>();
 
-    static {
+    static
+    {
 
-        foregroundColorCodes.put(Color.BLACK,   "30");
-        foregroundColorCodes.put(Color.RED,     "31");
-        foregroundColorCodes.put(Color.GREEN,   "32");
-        foregroundColorCodes.put(Color.YELLOW,  "33");
-        foregroundColorCodes.put(Color.BLUE,    "34");
+        foregroundColorCodes.put(Color.BLACK, "30");
+        foregroundColorCodes.put(Color.RED, "31");
+        foregroundColorCodes.put(Color.GREEN, "32");
+        foregroundColorCodes.put(Color.YELLOW, "33");
+        foregroundColorCodes.put(Color.BLUE, "34");
         foregroundColorCodes.put(Color.MAGENTA, "35");
-        foregroundColorCodes.put(Color.CYAN,    "36");
-        foregroundColorCodes.put(Color.WHITE,   "37");
+        foregroundColorCodes.put(Color.CYAN, "36");
+        foregroundColorCodes.put(Color.WHITE, "37");
 
-        backgroundColorCodes.put(Color.BLACK,   "40");
-        backgroundColorCodes.put(Color.RED,     "41");
-        backgroundColorCodes.put(Color.GREEN,   "42");
-        backgroundColorCodes.put(Color.YELLOW,  "43");
-        backgroundColorCodes.put(Color.BLUE,    "44");
+        backgroundColorCodes.put(Color.BLACK, "40");
+        backgroundColorCodes.put(Color.RED, "41");
+        backgroundColorCodes.put(Color.GREEN, "42");
+        backgroundColorCodes.put(Color.YELLOW, "43");
+        backgroundColorCodes.put(Color.BLUE, "44");
         backgroundColorCodes.put(Color.MAGENTA, "45");
-        backgroundColorCodes.put(Color.CYAN,    "46");
-        backgroundColorCodes.put(Color.WHITE,   "47");
+        backgroundColorCodes.put(Color.CYAN, "46");
+        backgroundColorCodes.put(Color.WHITE, "47");
     }
 
     private final PrintStream out;
@@ -102,7 +103,14 @@ public class VT100Writer
             out.print(mod.getMod());
             out.print(';');
         }
-        out.print(colorCode);
+        if (colorCode != null)
+        {
+            out.print(colorCode);
+        }
+        else
+        {
+
+        }
         out.print(CHAR_END);
         return this;
     }
