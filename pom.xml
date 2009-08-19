@@ -3,7 +3,7 @@
     <groupId>org.twdata.maven</groupId>
     <artifactId>console-colorizer</artifactId>
     <packaging>jar</packaging>
-    <version>0.2</version>
+    <version>0.3-SNAPSHOT</version>
     <name>console-colorizer</name>
     <url>http://maven.apache.org</url>
     <dependencies>
