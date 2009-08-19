@@ -52,7 +52,7 @@ WhiteSpace     = {LineTerminator} | [ \t\f]
 <YYINITIAL> .*"<<< FAILURE!"      { term.fg(RED, BOLD, BLINK); out.print(yytext()); term.clear(); }
 
 <YYINITIAL> ^"[ERROR]".* { printLog(RED, yytext()); }
-<YYINITIAL> ^"[DEBUG]".* { printLog(GRAY, yytext()); }
+<YYINITIAL> ^"[DEBUG]".* { printLog(GREEN, yytext()); }
 <YYINITIAL> ^"[INFO]".* { printLog(null, yytext()); }
 <YYINITIAL> ^"[WARNING]".* { printLog(YELLOW, yytext()); }
 

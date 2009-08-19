@@ -9,6 +9,5 @@ public enum Color
     MAGENTA,
     BLUE,
     CYAN,
-    WHITE,
-    GRAY
+    WHITE
 }

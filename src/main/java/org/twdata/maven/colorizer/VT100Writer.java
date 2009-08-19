@@ -31,13 +31,13 @@ public class VT100Writer
 
     }
 
-    private static final char CHAR_END = 'm'; // end of the attribute sequence
+    static final char CHAR_END = 'm'; // end of the attribute sequence
 
-    private static final String ESC = "\033[";
+    static final String ESC = "\033[";
 
-    private static final Map<Color, String> foregroundColorCodes = new HashMap<Color, String>();
+    static final Map<Color, String> foregroundColorCodes = new HashMap<Color, String>();
 
-    private static final Map<Color, String> backgroundColorCodes = new HashMap<Color, String>();
+    static final Map<Color, String> backgroundColorCodes = new HashMap<Color, String>();
 
     static
     {
@@ -98,18 +98,17 @@ public class VT100Writer
     VT100Writer color(String colorCode, CharacterModifier... mods)
     {
         out.print(ESC);
-        for (CharacterModifier mod : mods)
+        for (int x=0; x<mods.length; x++)
         {
-            out.print(mod.getMod());
-            out.print(';');
+            out.print(mods[x].getMod());
+            if (mods.length != x - 1 || colorCode != null)
+            {
+                out.print(';');
+            }
         }
         if (colorCode != null)
         {
             out.print(colorCode);
-        }
-        else
-        {
-
         }
         out.print(CHAR_END);
         return this;
