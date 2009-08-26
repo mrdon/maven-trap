@@ -16,19 +16,11 @@ import static org.twdata.maven.colorizer.Color.*;
 %{
     private final PrintStream out;
     private final VT100Writer term;
+    private final StringBuffer lineBuffer = new StringBuffer();
 
-    private void printLog(Color color, String text) {
-        if (color != null)
-            term.fg(color, BOLD);
-        else
-            term.mod(BOLD);
-        int pos = text.indexOf(']');
-        out.print(text.substring(0, pos+1));
-        if (color != null)
-            term.fg(color, CLEAR);
-        else
-            term.mod(CLEAR);
-        out.print(text.substring(pos+1));
+    private void print(Color color, String text, VT100Writer.CharacterModifier... mods) {
+        term.fg(color, mods);
+        out.print(text);
         term.clear();
     }
 %}
@@ -42,19 +34,34 @@ LineTerminator = \r|\n|\r\n
 InputCharacter = [^\r\n]
 WhiteSpace     = {LineTerminator} | [ \t\f]
 
-%state STRING
+%state LOGLINE
+%state FAILEDTESTS
 %integer
 
 %%
 
 /* keywords */
-<YYINITIAL> .*"BUILD FAILURE".*      { term.fg(RED, BOLD, BLINK); out.print(yytext()); term.clear(); }
-<YYINITIAL> .*"<<< FAILURE!"      { term.fg(RED, BOLD, BLINK); out.print(yytext()); term.clear(); }
+<YYINITIAL> .*"<<< FAILURE!"      { print(RED, yytext(), BOLD);  }
 
-<YYINITIAL> ^"[ERROR]".* { printLog(RED, yytext()); }
-<YYINITIAL> ^"[DEBUG]".* { printLog(GREEN, yytext()); }
-<YYINITIAL> ^"[INFO]".* { printLog(null, yytext()); }
-<YYINITIAL> ^"[WARNING]".* { printLog(YELLOW, yytext()); }
+<YYINITIAL> ^"[ERROR]" { term.fg(RED); out.print(yytext()); yybegin(LOGLINE); }
+<YYINITIAL> ^"[DEBUG]" { term.fg(WHITE); out.print(yytext()); yybegin(LOGLINE); }
+<YYINITIAL> ^"[WARNING]" { term.fg(YELLOW); out.print(yytext()); yybegin(LOGLINE); }
+<YYINITIAL> ^"[INFO]" { out.print(yytext()); yybegin(LOGLINE); }
 
-/* error fallback */
+<YYINITIAL> ^"Tests run:".* { term.bg(BLACK); term.fg(WHITE);  out.print(yytext()); term.clear(); }
+<YYINITIAL> ^"Failed tests:" { print(RED, yytext()); yybegin(FAILEDTESTS); term.fg(RED, BOLD); }
+
+<LOGLINE> {
+  "BUILD FAILURE"      { term.bg(RED); term.fg(BLACK);  out.print(yytext()); term.clear(); }
+  "BUILD SUCCESSFUL"   { term.bg(GREEN); term.fg(BLACK);  out.print(yytext()); term.clear(); }
+  {InputCharacter}     { out.print(yytext()); }
+  {LineTerminator}     { out.print(yytext()); term.clear(); yybegin(YYINITIAL); }
+}
+
+<FAILEDTESTS> {
+  ^[^ ]                { out.print(yytext()); term.clear(); yybegin(YYINITIAL); }
+  .|\n                 { out.print(yytext()); }
+}
+
+/* fallback */
 .|\n                             { out.print(yytext()); }
