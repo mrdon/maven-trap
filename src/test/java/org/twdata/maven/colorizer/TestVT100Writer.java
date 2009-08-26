@@ -20,7 +20,6 @@ public class TestVT100Writer extends TestCase
         ByteArrayOutputStream bout = new ByteArrayOutputStream();
         new VT100Writer(new PrintStream(bout)).mod(CharacterModifier.BOLD);
         assertEquals(ESC + "1m", new String(bout.toByteArray()));
-        fail();
     }
 
     public void testRedFgBold()
