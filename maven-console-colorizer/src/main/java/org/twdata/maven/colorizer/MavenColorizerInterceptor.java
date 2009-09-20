@@ -1,35 +1,27 @@
 package org.twdata.maven.colorizer;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.PrintStream;
-import java.io.StringReader;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import org.twdata.maven.interceptor.MavenInterceptor;
 
-/**
- * Wraps Maven
- */
-public class App
+import java.io.*;
+
+public class MavenColorizerInterceptor implements MavenInterceptor
 {
-    private static final String mainClass = "org.codehaus.classworlds.Launcher";
-
-    public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, IOException
+    public String[] before(String[] args)
     {
         System.out.println("Colorizing console...");
-        LexingOutputStream out = new LexingOutputStream();
-        System.setOut(new PrintStream(out));
+        System.setOut(new PrintStream(new LexingOutputStream()));
 
-        Class cls = Class.forName(mainClass);
-        Method main = cls.getMethod("main", String[].class);
-        main.invoke(null, new Object[]{args});
+        return args;
+    }
+
+    public void after(int exitCode)
+    {
+        // no-op
     }
 
     private static class LexingOutputStream extends OutputStream
     {
-        private OutputLexer lexer;
+        private final OutputLexer lexer;
         private int lastState;
 
         public LexingOutputStream()

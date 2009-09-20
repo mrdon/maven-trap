@@ -98,7 +98,7 @@ public class VT100Writer
     VT100Writer color(String colorCode, CharacterModifier... mods)
     {
         out.print(ESC);
-        for (int x=0; x<mods.length; x++)
+        for (int x = 0; x < mods.length; x++)
         {
             out.print(mods[x].getMod());
             if (mods.length != x - 1 || colorCode != null)

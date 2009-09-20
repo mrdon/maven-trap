@@ -1,0 +1,2 @@
+org.twdata.maven.colorizer.MavenColorizerInterceptor
+org.twdata.maven.offline.MavenAlwaysOfflineInterceptor

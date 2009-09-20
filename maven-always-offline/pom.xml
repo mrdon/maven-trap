@@ -1,0 +1,21 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.twdata.maven</groupId>
+        <artifactId>maven-interceptor-framework</artifactId>
+        <version>0.4-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>maven-always-offline</artifactId>
+    <name>Maven Always Offline</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.twdata.maven</groupId>
+            <artifactId>maven-interceptor</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+</project>
