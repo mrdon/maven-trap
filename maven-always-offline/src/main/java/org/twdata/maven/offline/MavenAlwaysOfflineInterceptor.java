@@ -1,16 +1,17 @@
 package org.twdata.maven.offline;
 
 import org.twdata.maven.interceptor.MavenInterceptor;
+import org.twdata.maven.interceptor.EnvMavenInterceptor;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 
-public class MavenAlwaysOfflineInterceptor implements MavenInterceptor
+public class MavenAlwaysOfflineInterceptor extends EnvMavenInterceptor
 {
     private static final String OFFLINE = "\"-o\"";
 
-    public String[] before(String[] args)
+    public String[] onBefore(String[] args)
     {
         final List<String> argsList = new ArrayList<String>(Arrays.asList(args));
         if (argsList.contains(OFFLINE))
@@ -24,7 +25,12 @@ public class MavenAlwaysOfflineInterceptor implements MavenInterceptor
         return argsList.toArray(new String[argsList.size()]);
     }
 
-    public void after(int exitCode)
+    public void onAfter(int exitCode)
     {
+    }
+
+    protected String getEnvironmentVariableName()
+    {
+        return "MAVEN_ALWAYS_OFFLINE";
     }
 }

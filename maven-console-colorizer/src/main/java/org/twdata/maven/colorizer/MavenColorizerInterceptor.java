@@ -1,12 +1,13 @@
 package org.twdata.maven.colorizer;
 
 import org.twdata.maven.interceptor.MavenInterceptor;
+import org.twdata.maven.interceptor.EnvMavenInterceptor;
 
 import java.io.*;
 
-public class MavenColorizerInterceptor implements MavenInterceptor
+public class MavenColorizerInterceptor extends EnvMavenInterceptor
 {
-    public String[] before(String[] args)
+    public String[] onBefore(String[] args)
     {
         System.out.println("Colorizing console...");
         System.setOut(new PrintStream(new LexingOutputStream()));
@@ -14,9 +15,14 @@ public class MavenColorizerInterceptor implements MavenInterceptor
         return args;
     }
 
-    public void after(int exitCode)
+    public void onAfter(int exitCode)
     {
         // no-op
+    }
+
+    protected String getEnvironmentVariableName()
+    {
+        return "MAVEN_COLOR";
     }
 
     private static class LexingOutputStream extends OutputStream
