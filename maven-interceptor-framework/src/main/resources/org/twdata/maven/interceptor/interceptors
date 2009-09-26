@@ -1,0 +1,3 @@
+org.twdata.maven.trap.colorizer.MavenColorizerInterceptor
+org.twdata.maven.trap.offline.MavenAlwaysOfflineInterceptor
+org.twdata.maven.trap.yamlpom.MavenYamlPomInterceptor

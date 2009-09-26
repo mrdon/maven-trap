@@ -2,19 +2,27 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.twdata.maven</groupId>
-    <artifactId>maven-interceptor-framework</artifactId>
-    <version>0.4-SNAPSHOT</version>
+    <groupId>org.twdata.maven.trap</groupId>
+    <artifactId>maven-trap-parent</artifactId>
+    <version>0.5-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>Maven Interceptor Framework</name>
+    <name>Maven Trap Parent</name>
 
     <modules>
-        <module>maven-interceptor</module>
-        <module>maven-console-colorizer</module>
-        <module>maven-interceptor-full</module>
-        <module>maven-always-offline</module>
+        <module>maven-interceptor-framework</module>
+        <module>interceptors</module>
+        <module>maven-trap</module>
     </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.2</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
     <build>
         <extensions>
@@ -71,4 +79,9 @@
             <url>http://twdata-m2-repository.googlecode.com/svn</url>
         </pluginRepository>
     </pluginRepositories>
+    <scm>
+        <connection>scm:git:git://github.com/mrdon/maven-trap.git</connection>
+        <url>scm:git:git://github.com/mrdon/maven-trap.git</url>
+    </scm>
+ 
 </project>
