@@ -1,8 +1,7 @@
 Usage:
 
-1. Copy jar to M2_HOME/boot
-2. Copy the M2_HOME/bin/mvn script to M2_HOME/bin/mvn2
-3. Edit the M2_HOME/bin/mvn2 script and change the last line from:
+1. Copy maven-trap-0.5.jar file to M2_HOME/boot
+2. Edit the M2_HOME/bin/mvn script and change the last line from:
 
 exec "$JAVACMD" \
   $MAVEN_OPTS \
@@ -20,11 +19,10 @@ exec "$JAVACMD" \
   "-Dmaven.home=${M2_HOME}"  \
   org.twdata.maven.trap.Dispatcher $QUOTED_ARGS
 
-3. Add the M2_HOME/bin/mvn2 to your path
-
-4. Switch on whatever features you'd like by setting environment variables:
+3. Switch on whatever features you'd like by setting environment variables:
    - MAVEN_COLOR : Output colorization
    - MAVEN_ALWAYS_OFFLINE : Changes default to be offline, -o to go online
    - MAVEN_YAMLPOM : Automatic creating and syncing of YAML version of the POM
 
-Now, you can use these features via 'mvn2' or execute as normal via 'mvn'
+Now, you can use 'mvn' like normal.  Alternatively, you can make the
+changes to a cloned 'mvn2' script to avoid modifying any original files.
