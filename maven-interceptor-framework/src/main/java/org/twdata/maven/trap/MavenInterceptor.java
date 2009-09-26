@@ -1,4 +1,4 @@
-package org.twdata.maven.interceptor;
+package org.twdata.maven.trap;
 
 public interface MavenInterceptor
 {

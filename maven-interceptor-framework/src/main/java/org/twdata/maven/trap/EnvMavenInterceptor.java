@@ -1,4 +1,4 @@
-package org.twdata.maven.interceptor;
+package org.twdata.maven.trap;
 
 /**
  * A maven interceptor that is enabled by an environement variable.

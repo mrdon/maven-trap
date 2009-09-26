@@ -15,11 +15,16 @@ to:
 
 exec "$JAVACMD" \
   $MAVEN_OPTS \
-  -cp "${M2_HOME}"/boot/classworlds-1.1.jar:"${M2_HOME}"/boot/maven-interceptor-full-0.4-SNAPSHOT.jar \
+  -cp "${M2_HOME}"/boot/classworlds-1.1.jar:"${M2_HOME}"/boot/maven-trap-0.5.jar \
   "-Dclassworlds.conf=${M2_HOME}/bin/m2.conf" \
   "-Dmaven.home=${M2_HOME}"  \
-  org.twdata.maven.interceptor.App $QUOTED_ARGS
+  org.twdata.maven.trap.Dispatcher $QUOTED_ARGS
 
 3. Add the M2_HOME/bin/mvn2 to your path
 
-Now, you can use colorised output via 'mvn2' or execute as normal via 'mvn'
+4. Switch on whatever features you'd like by setting environment variables:
+   - MAVEN_COLOR : Output colorization
+   - MAVEN_ALWAYS_OFFLINE : Changes default to be offline, -o to go online
+   - MAVEN_YAMLPOM : Automatic creating and syncing of YAML version of the POM
+
+Now, you can use these features via 'mvn2' or execute as normal via 'mvn'

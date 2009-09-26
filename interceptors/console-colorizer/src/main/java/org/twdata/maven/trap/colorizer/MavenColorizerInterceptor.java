@@ -1,6 +1,6 @@
 package org.twdata.maven.trap.colorizer;
 
-import org.twdata.maven.interceptor.EnvMavenInterceptor;
+import org.twdata.maven.trap.EnvMavenInterceptor;
 
 import java.io.*;
 

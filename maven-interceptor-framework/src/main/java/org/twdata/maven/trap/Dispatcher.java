@@ -1,4 +1,4 @@
-package org.twdata.maven.interceptor;
+package org.twdata.maven.trap;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -11,16 +11,16 @@ import java.net.InetAddress;
 /**
  * Wrap the maven main method for interception
  */
-public class App
+public class Dispatcher
 {
     private static final String MAVEN_MAIN_CLASS = "org.codehaus.classworlds.Launcher";
-    private static final String INTERCEPTORS_RESOURCE = "/org/twdata/maven/interceptor/interceptors";
+    private static final String INTERCEPTORS_RESOURCE = "/org/twdata/maven/trap/interceptors";
 
     public static void main(String[] args) throws Exception
     {
         final List<MavenInterceptor> interceptors = getMavenInterceptors();
 
-        // sets the security manager that will call the interceptor after
+        // sets the security manager that will call the trap after
         final MavenInterceptorSecurityManager securityManager = new MavenInterceptorSecurityManager(interceptors);
         System.setSecurityManager(securityManager);
 

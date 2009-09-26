@@ -1,7 +1,6 @@
 package org.twdata.maven.trap.yamlpom;
 
-import org.twdata.maven.interceptor.MavenInterceptor;
-import org.twdata.maven.interceptor.EnvMavenInterceptor;
+import org.twdata.maven.trap.EnvMavenInterceptor;
 import org.twdata.maven.yamlpom.SyncManager;
 import org.twdata.maven.yamlpom.InvalidFormatException;
 import org.twdata.maven.yamlpom.Log;
