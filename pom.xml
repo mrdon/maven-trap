@@ -1,20 +1,15 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>org.twdata.maven.trap</groupId>
     <artifactId>maven-trap-parent</artifactId>
     <version>0.5-SNAPSHOT</version>
     <packaging>pom</packaging>
-
     <name>Maven Trap Parent</name>
-
     <modules>
         <module>maven-interceptor-framework</module>
         <module>interceptors</module>
         <module>maven-trap</module>
     </modules>
-
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -23,7 +18,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
     <build>
         <extensions>
             <extension>
@@ -64,7 +58,6 @@
             </plugin>
         </plugins>
     </build>
-
     <repositories>
         <repository>
             <id>mojo-executor-repository</id>
@@ -83,5 +76,4 @@
         <connection>scm:git:git://github.com/mrdon/maven-trap.git</connection>
         <url>scm:git:git://github.com/mrdon/maven-trap.git</url>
     </scm>
- 
 </project>

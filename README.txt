@@ -19,10 +19,12 @@ exec "$JAVACMD" \
   "-Dmaven.home=${M2_HOME}"  \
   org.twdata.maven.trap.Dispatcher $QUOTED_ARGS
 
-3. Switch on whatever features you'd like by setting environment variables:
+3. Switch on whatever features you'd like by setting environment variables
+   (unsetting to disable):
    - MAVEN_COLOR : Output colorization
    - MAVEN_ALWAYS_OFFLINE : Changes default to be offline, -o to go online
    - MAVEN_YAMLPOM : Automatic creating and syncing of YAML version of the POM
 
 Now, you can use 'mvn' like normal.  Alternatively, you can make the
-changes to a cloned 'mvn2' script to avoid modifying any original files.
+changes to a cloned 'mvn2' script to avoid modifying any original files.  Also,
+you may want to change 'mvnDebug' as well if you use that frequently.
