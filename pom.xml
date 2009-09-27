@@ -72,6 +72,13 @@
             <url>http://twdata-m2-repository.googlecode.com/svn</url>
         </pluginRepository>
     </pluginRepositories>
+    <distributionManagement>
+        <repository>
+            <uniqueVersion>false</uniqueVersion>
+            <id>twdata-m2-repository</id>
+            <url>svn:https://twdata-m2-repository.googlecode.com/svn</url>
+        </repository>
+    </distributionManagement>
     <scm>
         <connection>scm:git:git://github.com/mrdon/Console-Colorizer.git</connection>
         <url>scm:git:git://github.com/mrdon/Console-Colorizer.git</url>
