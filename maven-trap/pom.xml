@@ -40,6 +40,9 @@
                         <goals>
                             <goal>shade</goal>
                         </goals>
+                        <configuration>
+                            <promoteTransitiveDependencies>false</promoteTransitiveDependencies>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>

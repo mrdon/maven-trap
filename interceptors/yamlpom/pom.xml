@@ -25,4 +25,37 @@
             <version>0.5</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>1.2.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                          <filters>
+                            <filter>
+                              <artifact>org.twdata.maven:maven-yamlpom-plugin</artifact>
+                              <excludes>
+                                <exclude>META-INF/maven/plugin.xml</exclude>
+                              </excludes>
+                            </filter>
+                          </filters>
+                            <artifactSet>
+                                <excludes>
+                                <exclude>${project.groupId}:maven-interceptor-framework
+                                </exclude>
+                                </excludes>
+                            </artifactSet>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
