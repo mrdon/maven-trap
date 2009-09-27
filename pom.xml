@@ -73,7 +73,7 @@
         </pluginRepository>
     </pluginRepositories>
     <scm>
-        <connection>scm:git:git://github.com/mrdon/maven-trap.git</connection>
-        <url>scm:git:git://github.com/mrdon/maven-trap.git</url>
+        <connection>scm:git:git://github.com/mrdon/Console-Colorizer.git</connection>
+        <url>scm:git:git://github.com/mrdon/Console-Colorizer.git</url>
     </scm>
 </project>
