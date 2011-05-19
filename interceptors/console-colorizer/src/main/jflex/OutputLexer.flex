@@ -44,6 +44,9 @@ WhiteSpace     = {LineTerminator} | [ \t\f]
 <YYINITIAL> .*"<<< FAILURE!"      { print(RED, yytext(), BOLD);  }
 
 <YYINITIAL> ^"[ERROR]" { term.fg(RED); out.print(yytext()); yybegin(LOGLINE); }
+<YYINITIAL> \t"at" { term.fg(RED); out.print(yytext()); yybegin(LOGLINE); }
+<YYINITIAL> \t"..." { term.fg(RED); out.print(yytext()); yybegin(LOGLINE); }
+<YYINITIAL> ^"Caused by:" { term.fg(RED); out.print(yytext()); yybegin(LOGLINE); }
 <YYINITIAL> ^"[DEBUG]" { term.fg(WHITE); out.print(yytext()); yybegin(LOGLINE); }
 <YYINITIAL> ^"[WARNING]" { term.fg(YELLOW); out.print(yytext()); yybegin(LOGLINE); }
 <YYINITIAL> ^"[INFO]" { out.print(yytext()); yybegin(LOGLINE); }
