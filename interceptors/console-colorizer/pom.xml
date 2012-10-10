@@ -3,7 +3,7 @@
 
     <parent>
         <groupId>org.twdata.maven.trap</groupId>
-        <artifactId>maven-trap-parent</artifactId>
+        <artifactId>maven-interceptor-parent</artifactId>
         <version>0.6-SNAPSHOT</version>
     </parent>
 

@@ -56,7 +56,10 @@ WhiteSpace     = {LineTerminator} | [ \t\f]
 
 <LOGLINE> {
   "BUILD FAILURE"      { term.bg(RED); term.fg(BLACK);  out.print(yytext()); term.clear(); }
-  "BUILD SUCCESSFUL"   { term.bg(GREEN); term.fg(BLACK);  out.print(yytext()); term.clear(); }
+  "BUILD SUCCESS"   { term.bg(GREEN); term.fg(BLACK);  out.print(yytext()); term.clear(); }
+  "SUCCESS"   { term.bg(GREEN); term.fg(BLACK);  out.print(yytext()); term.clear(); }
+  "FAILURE"   { term.bg(RED); term.fg(BLACK);  out.print(yytext()); term.clear(); }
+  "SKIPPED"   { term.bg(BLUE); term.fg(BLACK);  out.print(yytext()); term.clear(); }
   {InputCharacter}     { out.print(yytext()); }
   {LineTerminator}     { out.print(yytext()); term.clear(); yybegin(YYINITIAL); }
 }
