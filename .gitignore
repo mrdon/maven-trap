@@ -1,8 +1,11 @@
-target
+*.settings/
+*.project
+*.classpath
 *.iml
 *.ipr
 *.iws
 *~
 *.sh
+*target/
 pom.yml
 .pom.yml

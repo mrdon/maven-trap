@@ -1,25 +1,30 @@
 Usage:
+======
 
-1. Copy maven-trap-0.5.jar file to M2_HOME/boot
-2. Edit the M2_HOME/bin/mvn script and change the last line from:
+1- Copy maven-trap-0.5.jar file to M2_HOME/boot
+2- Edit the M2_HOME/bin/mvn script and change the last line from:
 
+```shell
 exec "$JAVACMD" \
   $MAVEN_OPTS \
   -cp "${M2_HOME}"/boot/classworlds-*.jar \
   "-Dclassworlds.conf=${M2_HOME}/bin/m2.conf" \
   "-Dmaven.home=${M2_HOME}"  \
   ${CLASSWORLDS_LAUNCHER} $QUOTED_ARGS
+```
 
 to:
 
+```shell
 exec "$JAVACMD" \
   $MAVEN_OPTS \
   -cp "${M2_HOME}"/boot/classworlds-1.1.jar:"${M2_HOME}"/boot/maven-trap-0.5.jar \
   "-Dclassworlds.conf=${M2_HOME}/bin/m2.conf" \
   "-Dmaven.home=${M2_HOME}"  \
   org.twdata.maven.trap.Dispatcher $QUOTED_ARGS
+```
 
-3. Switch on whatever features you'd like by setting environment variables
+3- Switch on whatever features you'd like by setting environment variables
    (unsetting to disable):
    - MAVEN_COLOR : Output colorization
    - MAVEN_ALWAYS_OFFLINE : Changes default to be offline, -o to go online
